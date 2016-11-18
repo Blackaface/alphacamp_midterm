@@ -6,9 +6,15 @@
       </ul>
 <% end %>
 
-
 <%= f.label :title, "Title" %>
 <%= f.text_field :title %>
 
 <%= f.label :content, "content" %>
 <%= f.text_area :content %>
+
+  <div class = "form-group"> 
+  <%= f.label :category_id, "Category_id" %>
+  <% Category.all.each do |c|%>
+  <%= f.radio_button :category_id, c.id%> <%= c.name %>
+  <% end %>
+</div>

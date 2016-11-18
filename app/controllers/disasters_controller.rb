@@ -12,6 +12,7 @@ class DisastersController < ApplicationController
 
   def create
     @disaster = Disaster.new(disaster_params)
+    @disaster.user = current_user
     if @disaster.save
       redirect_to disasters_path
       flash[:notice] = "disaster event was successfully created"
@@ -44,7 +45,7 @@ class DisastersController < ApplicationController
   private
 
   def disaster_params
-    params.require(:disaster).permit(:title, :content)
+    params.require(:disaster).permit(:title, :content, :category_id, :user_id)
   end
 
   def set_disaster

@@ -1,4 +1,10 @@
+
+<h4>Category: <%= @disaster.category_name %></h4>
+<h4>Title</h4>
 <%= @disaster.title %>
+<h4>Content</h4>
 <%= simple_format(@disaster.content) %>
+
+
 
 <p><%= link_to 'Back to index', disasters_path %></p>
