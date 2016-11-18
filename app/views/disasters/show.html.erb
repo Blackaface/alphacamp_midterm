@@ -1,10 +1,29 @@
 
-<h4>Category: <%= @disaster.category_name %></h4>
-<h4>Title</h4>
+<h3>Disaster Info</h3>
+<h4>[Category:] <%= @disaster.category_name %></h4>
+  <h4>Title</h4>
 <%= @disaster.title %>
-<h4>Content</h4>
+  <h4>Content</h4>
 <%= simple_format(@disaster.content) %>
 
+<%= link_to 'new comment', new_disaster_comment_path(@disaster), :class => 'btn btn-primary'  %>
+<%= link_to "Back to Index", disasters_path, :class => 'btn btn-success' %>
 
+<h3>comments</h3>
 
-<p><%= link_to 'Back to index', disasters_path %></p>
+<table class ='table'>
+<% @comments.each do |comment| %>
+  <tr>
+    <td width = 50%>
+      <%= comment.description %>
+    </td>
+    <td>
+      <%= link_to 'edit', edit_disaster_comment_path(@disaster, comment), :class => 'btn btn-info' %>
+      <%= link_to 'destroy', disaster_comment_path(@disaster, comment),
+                              :method => :delete, :class => 'btn btn-danger' %>
+    </td>
+  </tr>  
+<% end %>
+</table>
+
+    

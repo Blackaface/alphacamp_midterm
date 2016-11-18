@@ -22,6 +22,7 @@ class DisastersController < ApplicationController
   end
 
   def show
+    @comments = @disaster.comments
   end
 
   def edit

@@ -16,7 +16,7 @@ end
 def create
   @comment = @disaster.comments.build( attendee_params )
   if @comment.save
-    redirect_to disaster_comments_url( @disaster )
+    redirect_to disaster_path( @disaster )
   else
     render :action => :new
   end
@@ -30,7 +30,7 @@ def update
   @comment = @disaster.comments.find( params[:id] )
 
   if @comment.update( attendee_params )
-    redirect_to disaster_comments_url( @disaster )
+    redirect_to disaster_path( @disaster )
   else
     render :action => :edit
   end
