@@ -12,7 +12,7 @@
       <h3>Created_at</h3>
     </td>
     <td>
-      <h3>Edit/Delete/Add Comments</h3>
+      <h3>Edit/Delete</h3>
     </td>
   </tr>
   <tr>
@@ -29,13 +29,12 @@
     <td>
        <%= link_to "Edit", edit_disaster_path(disaster) , :class => "btn btn-default"%>
        <%= link_to "Delete", disaster_path(disaster), :method => :delete , :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %>
-       <%= link_to 'Add Comments', disaster_comments_path(disaster) %>
     </td>
   </tr>
   <% end %>
 </table>
 
-<%= link_to "New Disaster Event", new_disaster_path %>
+<%= link_to "New Disaster Event", new_disaster_path,:class => 'btn btn-primary' %>
 
 
 <%= paginate @disasters %>

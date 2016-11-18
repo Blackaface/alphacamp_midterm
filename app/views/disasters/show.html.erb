@@ -6,7 +6,7 @@
   <h4>Content</h4>
 <%= simple_format(@disaster.content) %>
 
-<%= link_to 'new comment', new_disaster_comment_path(@disaster), :class => 'btn btn-primary'  %>
+<%= link_to 'Add new comment', new_disaster_comment_path(@disaster), :class => 'btn btn-primary'  %>
 <%= link_to "Back to Index", disasters_path, :class => 'btn btn-success' %>
 
 <h3>comments</h3>
