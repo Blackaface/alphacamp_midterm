@@ -1,14 +1,27 @@
-<ul>
-     <% @disasters.each do |disaster|%>
 
-     <li>
-          <%= disaster.title %>
-          <%= link_to "Show", disaster_path(disaster) %>
-          <%= link_to "Edit", edit_disaster_path(disaster) %>
-          <%= link_to "Delete", disaster_path(disaster), :method => :delete,:data => { :confirm => "Are you sure?" } %>
-     </li>
-     <% end %>
-</ul>
+
+<table class = "table">
+  <tr>
+    <td>
+      <h3>Title</h3>
+    </td>
+    <td>
+      <h3>Show/Edit/Delete</h3>
+    </td>
+  </tr>
+  <tr>
+  <% @disasters.each do |disaster|%>
+    <td>
+      <%= disaster.title %>
+    </td>
+    <td>
+       <%= link_to "Show", disaster_path(disaster), :class => "btn btn-primary" %>
+       <%= link_to "Edit", edit_disaster_path(disaster) , :class => "btn btn-default"%>
+       <%= link_to "Delete", disaster_path(disaster), :method => :delete , :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 
 <%= link_to "New Disaster Event", new_disaster_path %>
 <%= paginate @disasters %>
