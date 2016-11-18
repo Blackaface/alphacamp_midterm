@@ -2,7 +2,7 @@ class DisastersController < ApplicationController
   before_action :set_disaster, :only => [ :show, :edit, :update, :destroy]
 
   def index 
-    @disasters = Disaster.all
+    @disasters = Disaster.page(params[:page]).per(5)
   end
 
   def new
