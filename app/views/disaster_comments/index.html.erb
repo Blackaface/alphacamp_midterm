@@ -1,14 +1,22 @@
-<ul>
+<table class ='table'>
 <% @comments.each do |comment| %>
-  <li>
-    <%= comment.description %>
-    <%= link_to 'show', disaster_comment_path(@disaster, comment) %>
-    <%= link_to 'edit', edit_disaster_comment_path(@disaster, comment) %>
-    <%= link_to 'destroy', disaster_comment_path(@disaster, comment),
-                              :method => :delete %>
-  </li>
+  <tr>
+    <td width = 50%>
+      <%= comment.description %>
+    </td>
+    <td>
+      <%= link_to 'show', disaster_comment_path(@disaster, comment), :class => 'btn btn-info' %>
+      <%= link_to 'edit', edit_disaster_comment_path(@disaster, comment), :class => 'btn btn-success' %>
+      <%= link_to 'destroy', disaster_comment_path(@disaster, comment),
+                              :method => :delete, :class => 'btn btn-danger' %>
+    </td>
+  </tr>
+    
+    
+  
 <% end %>
 
-</ul>
+</table>
 
-    <%= link_to 'new comment', new_disaster_comment_path(@disaster) %>
+    <%= link_to 'new comment', new_disaster_comment_path(@disaster), :class => 'btn btn-primary'  %>
+    <%= link_to "Back to Index", disasters_path, :class => 'btn btn-danger' %>

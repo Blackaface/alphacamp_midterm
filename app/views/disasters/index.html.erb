@@ -9,6 +9,9 @@
       <h3>Title</h3>
     </td>
     <td>
+      <h3>Created_at</h3>
+    </td>
+    <td>
       <h3>Show/Edit/Delete</h3>
     </td>
   </tr>
@@ -21,10 +24,13 @@
       <%= disaster.title %>
     </td>
     <td>
+      <%= disaster.created_at %>
+    </td>
+    <td>
        <%= link_to "Show", disaster_path(disaster), :class => "btn btn-primary" %>
        <%= link_to "Edit", edit_disaster_path(disaster) , :class => "btn btn-default"%>
        <%= link_to "Delete", disaster_path(disaster), :method => :delete , :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %>
-       <%= link_to 'Comments', disaster_comments_path(disaster) %>
+       <%= link_to 'Add Comments', disaster_comments_path(disaster) %>
     </td>
   </tr>
   <% end %>
