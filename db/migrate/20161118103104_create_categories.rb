@@ -3,6 +3,7 @@ class CreateCategories < ActiveRecord::Migration[5.0]
     create_table :categories do |t|
       t.string :name
 
+
       t.timestamps
     end
     add_column :disasters, :category_id, :integer

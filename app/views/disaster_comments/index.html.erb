@@ -1,0 +1,14 @@
+<ul>
+<% @comments.each do |comment| %>
+  <li>
+    <%= comment.description %>
+    <%= link_to 'show', disaster_comment_path(@disaster, comment) %>
+    <%= link_to 'edit', edit_disaster_comment_path(@disaster, comment) %>
+    <%= link_to 'destroy', disaster_comment_path(@disaster, comment),
+                              :method => :delete %>
+  </li>
+<% end %>
+
+</ul>
+
+    <%= link_to 'new comment', new_disaster_comment_path(@disaster) %>
