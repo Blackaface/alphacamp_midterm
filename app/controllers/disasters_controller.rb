@@ -1,4 +1,6 @@
 class DisastersController < ApplicationController
+  before_action :set_disaster, :only => [ :show, :edit, :update, :destroy]
+
   def index 
     @disasters = Disaster.all
   end
@@ -9,37 +11,43 @@ class DisastersController < ApplicationController
 
   def create
     @disaster = Disaster.new(disaster_params)
-    @disaster.save
-
-    redirect_to disasters_path
+    if @disaster.save
+      redirect_to disasters_path
+      flash[:notice] = "disaster event was successfully created"
+    else
+      render :action => :new
+    end
   end
 
   def show
-    @disaster = Disaster.find(params[:id])
   end
 
   def edit
-    @disaster = Disaster.find(params[:id])
   end
 
   def update
-    @disaster = Disaster.find(params[:id])
-    @disaster.update(disaster_params)
-
-    redirect_to disaster_path(@disaster)
+    if @disaster.update(disaster_params)
+      redirect_to disaster_path(@disaster)
+      flash[:notice] = "disaster event was successfully updated"
+    else
+      render :action => :edit
+    end
   end
 
   def destroy
-    @disaster = Disaster.find(params[:id])
     @disaster.destroy
-
     redirect_to :action => :index
+    flash[:alert] = "disaster event was successfully deleted"
   end
 
   private
 
   def disaster_params
     params.require(:disaster).permit(:title, :content)
+  end
+
+  def set_disaster
+    @disaster = Disaster.find(params[:id])
   end
 
 end
