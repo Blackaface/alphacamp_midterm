@@ -1,2 +1,3 @@
 class Disaster < ApplicationRecord
+  
 end

@@ -1,0 +1,11 @@
+<%= form_for @disaster , :url => disasters_path do |f|%>
+
+<%= f.label :title, "Title" %>
+<%= f.text_field :title %>
+
+<%= f.label :content, "content" %>
+<%= f.text_area :content %>
+
+<%= f.submit "Create Event"%>
+
+<% end %>
