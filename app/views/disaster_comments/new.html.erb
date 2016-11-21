@@ -1,5 +1,12 @@
 <%= form_for @comment, :url => disaster_comments_path(@disaster) do |f| %>
-   <%= f.text_field :description %>
-   <%= f.submit %>
-   <%= link_to "Back to Last Page", disaster_path(@disaster) %>
+    <% if @comment.errors.any? %>
+        <ul>
+          <% @comment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+    <% end %>
+    <%= f.text_field :description %>
+    <%= f.submit %>
 <% end %>
+<%= link_to "Back to Last Page", disaster_path(@disaster) %>
