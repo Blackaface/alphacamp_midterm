@@ -1,5 +1,5 @@
 <%= form_for @disaster, :url => disaster_path(@disaster), :method => :patch do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   <%= f.submit "update"%>
-  <%= link_to "Back to Last Page", disasters_path, :class => 'btn btn-info'  %>
 <% end %>
+<%= link_to "Back to Last Page", disasters_path, :class => 'btn btn-info'  %>

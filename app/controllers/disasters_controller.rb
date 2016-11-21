@@ -1,8 +1,9 @@
 class DisastersController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
-  before_action :set_disaster, :only => [ :show, :edit, :update, :destroy]
-
-  def index 
+  before_action :set_disaster, :only => [:show]
+  before_action :set_own_disaster, :only => [:edit, :update, :destroy]
+  # 本來的程式碼在刪除修改的時候並未對使用者進行驗證
+  def index
     @disasters = Disaster.page(params[:page]).per(5)
   end
 
@@ -51,6 +52,10 @@ class DisastersController < ApplicationController
 
   def set_disaster
     @disaster = Disaster.find(params[:id])
+  end
+
+  def set_own_disaster
+    @disaster = current_user.disasters.find(params[:id])
   end
 
 end
